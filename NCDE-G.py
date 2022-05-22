@@ -292,7 +292,7 @@ class Seq2Seq(AbstractTrafficStateModel):
             # decoder_output = [batch_size, self.num_nodes * self.output_dim]
             # decoder_hn = [layers * num_directions, batch_size, hidden_size]
             outputs.append(decoder_output.reshape(batch_size, self.num_nodes, self.output_dim))
-            # 只有训练的时候才考虑用真值
+            
             if self.training and random.random() < self.teacher_forcing_ratio:
                 decoder_input = target[i]
             else:
